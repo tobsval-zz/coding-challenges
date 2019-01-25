@@ -8,5 +8,3 @@ def anagrams(word, words):
         if _word_comp == word_composition:
             anagrams_list.append(_word)
     return anagrams_list
-
-print(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']))
