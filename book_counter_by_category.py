@@ -8,4 +8,3 @@ def stock_list(list_of_art, list_of_cat):
         category_dict[book[0]] = int(book.split(' ')[1])
     return category_dict
 
-
