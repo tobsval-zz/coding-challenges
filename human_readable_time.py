@@ -6,4 +6,3 @@ def make_readable(seconds : int):
     readable_time = '{:d}:{:02d}:{:02d}'.format(hours, mins, secs)
     return readable_time
 
-print(make_readable(100))
