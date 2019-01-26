@@ -16,7 +16,8 @@ class RomanNumerals:
             num_units[exp] = num_units[exp] * (10 ** exp)
             if num_units[exp] in alphabet:
                 roman_number += alphabet[num_units[exp]]
-        print(roman_number)
+            elif num_units[exp] > 0: #Filter 0s
+                self.find_order_of_magnitude(num_units[exp], list(alphabet.keys()))
 
     def from_roman(self, string : str):
         alphabet = {'I' : 1, 'V' : 5, 'X' : 10, 'L' : 50, 'C' : 100, 'D' : 500, 'M' : 1000}
@@ -27,7 +28,8 @@ class RomanNumerals:
         return True if number % 10 == 9 else False
 
     def find_order_of_magnitude(self, number : int, magnitudes : list):
-        pass
+        filtered_magnitudes = [num for num in magnitudes if len(str(num)) == len(str(number))]
+        print(filtered_magnitudes)
 
 RomanNumerals(543)
 
