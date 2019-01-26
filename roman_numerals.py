@@ -28,9 +28,9 @@ class RomanNumerals:
         return True if number % 10 == 9 else False
 
     def find_order_of_magnitude(self, number : int, magnitudes : list):
+        if len(str(number)) > len(str(max(magnitudes))): #In case a number is of a magnitude greater of 1000
+            filtered_magnitudes = [1000]
         filtered_magnitudes = [num for num in magnitudes if len(str(num)) == len(str(number))]
         print(filtered_magnitudes)
-
-RomanNumerals(543)
 
 #Work in Progress
