@@ -27,16 +27,16 @@ class RomanNumerals:
         # In case a number is of a magnitude greater than 1000 or is a multiple of 1000
         if len(str(number)) > len(str(max(magnitudes))) or number % 1000 == 0:
             return 1000
-        filtered_magnitudes = [num for num in magnitudes if len(str(num)) == len(str(number))]
+        elif number < 90:
+            filtered_magnitudes = [num for num in magnitudes if (num - number) <= (num / 100) * 10]
+        else:
+            filtered_magnitudes = [num for num in magnitudes if (num - number) <= (num / 100) * 20]
         # Calculate the offset between the number and the magnitude in order to find the closest one
         magnitude_deltas = list({mag : abs(number - mag) for mag in filtered_magnitudes}.values())
-        if magnitude_deltas[0] == magnitude_deltas[1]:
-            return min(filtered_magnitudes)
-        elif magnitude_deltas[0] > magnitude_deltas[1]:
-            return filtered_magnitudes[1]
-        else:
-            return filtered_magnitudes[0]
-        # WIP
+        minimum_delta = magnitude_deltas.index(min(magnitude_deltas))
+        return filtered_magnitudes[minimum_delta]
 
-RomanNumerals(543)
+
+RomanNumerals(91)
+
 
