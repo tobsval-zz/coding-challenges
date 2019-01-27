@@ -16,20 +16,25 @@ class RomanNumerals:
             if num_units[exp] in alphabet:
                 roman_number += alphabet[num_units[exp]]
             elif num_units[exp] > 0: # Filter 0s
-                self.find_closest_magnitude(num_units[exp], list(alphabet.keys()))
+                self.find_magnitude_delta(num_units[exp], list(alphabet.keys()))
 
     def from_roman(self, string : str):
         alphabet = {'I' : 1, 'V' : 5, 'X' : 10, 'L' : 50, 'C' : 100, 'D' : 500, 'M' : 1000}
         pass
 
-    def find_closest_magnitude(self, number : int, magnitudes : list):
+    def find_magnitude_delta(self, number : int, magnitudes : list):
         if len(str(number)) > len(str(max(magnitudes))): # In case a number is of a magnitude greater than 1000
             filtered_magnitudes = [1000]
         filtered_magnitudes = [num for num in magnitudes if len(str(num)) == len(str(number))]
-        print(number, filtered_magnitudes)
         # Calculate the offset between the number and the magnitude in order to find the closest one
-        magnitude_delta = [(mag, abs(number - mag)) for mag in filtered_magnitudes]
-        print(magnitude_delta)
+        magnitude_deltas = list({mag : abs(number - mag) for mag in filtered_magnitudes}.values())
+        print(magnitude_deltas)
+        if magnitude_deltas[0] == magnitude_deltas[1]:
+            print(number, min(magnitude_deltas))
+        elif magnitude_deltas[0] > magnitude_deltas[1]:
+            print(number, magnitude_deltas[1])
+        else:
+            print(number, magnitude_deltas[0])
         # WIP
 
 RomanNumerals(543)
