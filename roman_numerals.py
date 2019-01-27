@@ -24,7 +24,6 @@ class RomanNumerals:
         pass
 
     def find_closest_magnitude(self, number : int, magnitudes : list):
-        # In case a number is a multiple of 1000
         if number % 1000 == 0:
             return 1000
         elif number % 5 == 1:
