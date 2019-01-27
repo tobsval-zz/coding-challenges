@@ -24,8 +24,9 @@ class RomanNumerals:
         pass
 
     def find_closest_magnitude(self, number : int, magnitudes : list):
-        if len(str(number)) > len(str(max(magnitudes))): # In case a number is of a magnitude greater than 1000
-            filtered_magnitudes = [1000]
+        # In case a number is of a magnitude greater than 1000 or is a multiple of 1000
+        if len(str(number)) > len(str(max(magnitudes))) or number % 1000 == 0:
+            return 1000
         filtered_magnitudes = [num for num in magnitudes if len(str(num)) == len(str(number))]
         # Calculate the offset between the number and the magnitude in order to find the closest one
         magnitude_deltas = list({mag : abs(number - mag) for mag in filtered_magnitudes}.values())
