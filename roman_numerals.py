@@ -17,10 +17,7 @@ class RomanNumerals:
                 roman_num += alphabet[num_digits[exp]]
             elif num_digits[exp] > 0: # Filter 0s
                 closest_mag = self.find_closest_magnitude(num_digits[exp], list(alphabet.keys()))
-                if closest_mag > num_digits[exp]:
-                    pass #WIP
-                else:
-                    pass #WIP
+                print(num_digits[exp], closest_mag)
         return roman_num
 
     def from_roman(self, string : str):
@@ -40,5 +37,5 @@ class RomanNumerals:
         return filtered_magnitudes[minimum_delta]
 
 
-RomanNumerals(5)
+RomanNumerals(169)
 
